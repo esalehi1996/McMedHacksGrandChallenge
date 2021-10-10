@@ -3,6 +3,10 @@ The winner project for AlphaTau Grand Challenge in McMedHacks (https://mcmedhack
 
 In this project, inspired by some successful approaches in Statistical Machine Learning, Deep learning and Computer Vision, we designed a multi-stage pipeline to solve the problem of Seed detection in CT images.
 
+Here is a link to a youtube video presenting our approach:
+
+https://www.youtube.com/watch?v=GUbqbD3Eq0I
+
 ![Screenshot](results/Abstract_image.png)
 <p align="center">
 The proposed design flow
