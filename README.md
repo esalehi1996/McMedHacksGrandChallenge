@@ -20,6 +20,10 @@ The proposed design flow
 ## How we built it
 1. This step involves using a 2D U-Net pre-trained for semantic segmentation an MRI dataset. Since our data is 3d, the model cannot be used in a naive way. For each layer of the output matrix, a seperate U-net is called with the correspoding layer in input and its sorrounding two layers used as inputs. We use each as seperate channels in the 2D U-Net. This basically turns each data sample into several (usually 41) new data samples which are all used to fine-tune the U-Net.
 
+The link to this pretrained 2D UNET is as follows:
+
+https://pytorch.org/hub/mateuszbuda_brain-segmentation-pytorch_unet/
+
 2. This step involves counting the number of seeds given the Mask matrix. This mask matrix only has ones and zeros as its elements. Our first approach for solving this step involves using a Multi-layer neural network composed of 3D Convolution layers, 3D Batch Normalization layers, Relu activation function and Linear layers. This neural network is trained to correctly predict the number of seeds. Due to some complications, this component does not work as planned. Another approach was used which is discussed in the next section.
 
 3. At this step, it is assumed we have 3D mask matrix and the number of seeds. Using this data we can use clustering methods to find the seeds. Gaussian Mixture Models are used to cluster the ones in the 3D mask matrix. It was mentioned that the Neural Network used at the previous step might not be as accurate for finding the number of seeds. Another clustering method is Bayesian Gaussian Mixture models which involves using Bayesian optimization to find the best Mixture of Gaussians. An advantage of this method is that it also finds the number of clusters that is most optimal.
